@@ -17,7 +17,7 @@ import jakarta.persistence.Id;
  * @author digma
  */
 
-    @Entity
+@Entity
 @Table(name = "airport")
 public class Airport {
  @Id
