@@ -1,7 +1,9 @@
 
 package br.gm.alv.airports.service;
 
+import br.gm.alv.aiports.projections.AirportNearMeProjection;
 import br.gm.alv.airports.DTO.AirportMinDTO;
+import br.gm.alv.airports.DTO.AirportNearMeDTO;
 import br.gm.alv.airports.entities.Airport;
 import br.gm.alv.airports.repositories.AirportRepository;
 import java.util.List;
@@ -45,4 +47,14 @@ public class AirportService {
          return result;
      }
      
+     public List<AirportNearMeDTO> findNearMe(double latitude, double longitude) {
+         List<AirportNearMeProjection> resultNearAirports = airportRepository.findNearMe(latitude,longitude); 
+         
+         List<AirportNearMeDTO> resultDTO = resultNearAirports.stream()
+                 .map(x -> new AirportNearMeDTO(x)).toList();
+                 
+                 return resultDTO;
+         
+         
+     }   
 }
